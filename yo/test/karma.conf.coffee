@@ -21,9 +21,9 @@ module.exports = (config) ->
          'bower_components/angular-route/angular-route.js'
          'bower_components/angular-sanitize/angular-sanitize.js'
          'bower_components/angular-touch/angular-touch.js'
-         'app/scripts/**/*.cs'
-         'test/mock/**/*.cs'
-         'test/spec/**/*.cs'
+         'app/scripts/**/*.coffee'
+         'test/mock/**/*.coffee'
+         'test/spec/**/*.coffee'
       ],
 
    # list of files / patterns to exclude

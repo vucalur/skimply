@@ -422,12 +422,14 @@ module.exports = function (grunt) {
       // Test settings
       karma: {
          unit: {
-            configFile: 'test/karma.conf.js',
+            configFile: 'test/karma.conf.coffee',
             singleRun: true
          }
       }
    });
 
+
+   grunt.loadNpmTasks('grunt-karma');
 
    grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
       if (target === 'dist') {
