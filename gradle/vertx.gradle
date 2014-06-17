@@ -16,8 +16,10 @@ import org.vertx.java.platform.impl.cli.Starter
  * limitations under the License.
  */
 
+//TODO(vucalur): remove java compilation phase (removing the line below doesn't do the trick) - project build speed
 apply plugin: 'java'
 apply plugin: 'groovy'
+apply plugin: 'scala'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
 
