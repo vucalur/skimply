@@ -7,6 +7,8 @@
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
 
+var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
+
 module.exports = function (grunt) {
 
    // Load grunt tasks automatically
@@ -63,6 +65,14 @@ module.exports = function (grunt) {
 
       // The actual grunt server settings
       connect: {
+         proxies: [
+            {
+               context: '/',
+               host: 'localhost',
+               port: 8080 // Vert.x port goes here
+//               ws: true
+            }
+         ],
          options: {
             port: 9000,
             // Change this to '0.0.0.0' to access the server from outside.
@@ -79,7 +89,8 @@ module.exports = function (grunt) {
                         '/bower_components',
                         connect.static('./bower_components')
                      ),
-                     connect.static(appConfig.app)
+                     connect.static(appConfig.app),
+                     proxySnippet
                   ];
                }
             }
@@ -331,7 +342,7 @@ module.exports = function (grunt) {
                {
                   expand: true,
                   cwd: '<%= yeoman.dist %>',
-                  src: ['*.html', 'views/{,*/}*.html'],
+                  src: ['*.html', 'template/{,*/}*.html'],
                   dest: '<%= yeoman.dist %>'
                }
             ]
@@ -374,7 +385,7 @@ module.exports = function (grunt) {
                      '*.{ico,png,txt}',
                      '.htaccess',
                      '*.html',
-                     'views/{,*/}*.html',
+                     'template/{,*/}*.html',
                      'images/{,*/}*.{webp}',
                      'fonts/*'
                   ]
@@ -429,6 +440,7 @@ module.exports = function (grunt) {
    });
 
 
+   // temporary workaround:
    grunt.loadNpmTasks('grunt-karma');
 
    grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
@@ -439,6 +451,7 @@ module.exports = function (grunt) {
       grunt.task.run([
          'clean:server',
          'wiredep',
+         'configureProxies',
          'concurrent:server',
          'autoprefixer',
          'connect:livereload',

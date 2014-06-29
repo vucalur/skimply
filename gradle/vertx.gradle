@@ -185,11 +185,11 @@ def doInit() {
     if (!cpFile.exists()) {
         cpFile.createNewFile();
         String defaultCp =
-                "src/main/resources\r\n" +
-                        "bin\r\n" +
-                        "out/production/${project.name}\r\n" +
-                        "out/test/${project.name}\r\n" +
-                        "build/deps\r\n";
+            "src/main/resources\r\n" +
+                "bin\r\n" +
+                "out/production/${project.name}\r\n" +
+                "out/test/${project.name}\r\n" +
+                "build/deps\r\n";
         cpFile << defaultCp;
     }
     def args = ['create-module-link', moduleName]

@@ -1,0 +1,10 @@
+<div>
+  <div class="jumbotron">
+    <h3 ng-if="!ctrl.isAuthenticated()">
+      Nothing here for you pall.<br><br>
+      Login to see available actions.
+    </h3>
+
+    <h3 ng-if="ctrl.isAuthenticated()">There you go..</h3>
+  </div>
+</div>

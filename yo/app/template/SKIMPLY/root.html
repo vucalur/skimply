@@ -1,0 +1,25 @@
+<div>
+  <nav ng-controller="RootCtrl as ctrl" class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand">CAS Panel</a>
+      </div>
+      <ul class="nav navbar-nav animate-if" ng-if="ctrl.isAuthenticated()">
+        <li>
+          <a sref="accounts">Manage accounts</a>
+        </li>
+      </ul>
+      <form ng-if="!ctrl.isAuthenticated()" class="navbar-form navbar-right animate-if">
+        <button class="btn btn-default" ng-click="ctrl.login()">Sign in</button>
+      </form>
+      <form ng-if="ctrl.isAuthenticated()" class="navbar-form navbar-right animate-if">
+        <a>{{currentUser.firstname}} {{currentUser.lastname}}</a>
+        <button class="btn btn-primary logout" ng-click="ctrl.logout()">Log out</button>
+      </form>
+    </div>
+  </nav>
+
+
+  <ui-view></ui-view>
+
+</div>

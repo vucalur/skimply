@@ -1,0 +1,39 @@
+<div>
+  <h2>Student accounts</h2>
+
+  <button class="btn btn-success" ng-click="ctrl.openModal()">
+    <span class="glyphicon glyphicon-leaf"></span> Create a new Account
+  </button>
+
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Sample text</th>
+          <th>Sample date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="student in students">
+          <td>{{student.id}}</td>
+          <td>{{student.sampleTextAttribute}}</td>
+          <td>{{student.sampleDateAttribute}}</td>
+          <td>
+            <button type="submit"
+                    ng-click="update(student.id)"
+                    class="btn">
+              <span class="glyphicon glyphicon-pencil"></span> Edit
+            </button>
+            <button type="submit"
+                    ng-click="delete(student.id)"
+                    class="btn btn-danger">
+              <span class="glyphicon glyphicon-remove-circle"></span> Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
